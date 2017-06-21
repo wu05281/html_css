@@ -117,7 +117,7 @@ body {
     display: none;
     position: absolute;
     text-align: left;
-    z-index: 1000;
+    z-index: 12;
 }
 
 .header_menu_li:hover {
@@ -195,6 +195,19 @@ body {
 
 .banner-nav .banner-item-selected {
     background: darkorange;
+}
+
+#loginBox{
+    position: relative;
+    display: inline-block;/**行内块**/
+    z-index: 100;
+    top: 62px;
+    left: 20%;
+    width: 310px;
+    height: 276px;
+    background: black;
+    margin-left: 187px;
+    filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;/**半透明效果**/
 }
 
 #shouyi {
