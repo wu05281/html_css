@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/init.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+<!-- 登录注册以及客服电话 -->
+<div id="tool_bar">
+    <div id="tool_bar_left">
+        <span id="tool_bar_phone">服务热线: 400-055-5915</span>
+        <span id="tool_bar_info">优质资产 透明安全</span>
+    </div>
+    <div id="tool_bar_right">
+        <a href="#" id="tool_bar_qq"></a>
+        <a href="#" id="tool_bar_app"></a>
+        <a href="#" id="tool_bar_login">登录</a>
+        <a href="#" id="tool_bar_register">注册</a>
+        <a href="#" id="tool_bar_help">帮助中心</a>
+
+    </div>
+</div>
+
+<!--logo以及导航栏-->
+<div id="header">
+    <h1 id="header_logo"><img src="./images/logo.png"></h1>
+    <ul id="header_menu">
+        <li class="header_menu_li">首页</li>
+        <li class="header_menu_li" id="header_menu_prd">产品
+            <ul class="sub_menu">
+                <li class="sub_menu_li">拍活期</li>
+                <li class="sub_menu_li">拍定期</li>
+                <li class="sub_menu_li">月享计划</li>
+            </ul>
+        </li>
+        <li class="header_menu_li">我的账户</li>
+        <li class="header_menu_li">安全保障</li>
+        <li class="header_menu_li">关于拍财富</li>
+    </ul>
+</div>
+
+<!--广告位，banner-->
+<div class="banner">
+    <ul class="banner-main">
+        <li class="banner-panel">
+            <a href="https://www.paicaifu.com" target="_blank"><img alt="拍财富" title="拍财富" src="./images/banner-1.png"></a>
+        </li>
+        <li class="banner-panel">
+            <a href="http://www.paicaifu.com" target="_blank"><img alt="拍财富" title="拍财富" src="./images/banner-2.png"></a>
+        </li>
+        <li class="banner-panel">
+            <a href="http://www.paicaifu.com" target="_blank"><img alt="拍财富" title="拍财富" src="./images/banner-3.png"></a>
+        </li>
+    </ul>
+    <div class="banner-extra">
+        <ul class="banner-nav">
+            <li class="banner-item"></li>
+            <li class="banner-item"></li>
+            <li class="banner-item"></li>
+        </ul>
+    </div>
+</div>
+
+<!--广告位，收益-->
+<div id="shouyi"></div>
+
+<!--活期-->
+<div id="huoqi">
+    <div id="huoqi_item"></div>
+    <div id="yuexiang"></div>
+</div>
+
+<!--定期-->
+<div id="dingqi"></div>
+
+<!--资产展示-->
+<div id="show"></div>
+
+<!--合作伙伴-->
+<div id="partner"></div>
+
+<!--媒体报道-->
+<div id="xinwen"></div>
+<div id="footer"></div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var length,
+            currentIndex = 0,
+            interval,
+            hasStarted = false, //是否已经开始轮播
+            t = 3000; //轮播时间间隔
+        length = $('.banner-panel').length;
+
+        //将除了第一张图片隐藏
+        $('.banner-panel:not(:first)').hide();
+
+        //将第一个banner-item设为激活状态
+        $('.banner-item:first').addClass('banner-item-selected');
+
+        //隐藏向前、向后翻按钮
+        $('.banner-page').hide();
+
+        //鼠标上悬时显示向前、向后翻按钮,停止滑动，鼠标离开时隐藏向前、向后翻按钮，开始滑动
+        $('.banner-panel').hover(function () {
+            stop();
+        }, function () {
+            start();
+        });
+
+        $('.banner-item').hover(function (e) {
+            stop();
+            var preIndex = $(".banner-item").filter(".banner-item-selected").index();
+            currentIndex = $(this).index();
+            play(preIndex, currentIndex);
+        }, function () {
+            start();
+        });
+
+        /**
+         * 向后翻页
+         */
+        function next() {
+            var preIndex = currentIndex;
+            currentIndex = ++currentIndex % length;
+            play(preIndex, currentIndex);
+        }
+
+
+        /**
+         * 从preIndex页翻到currentIndex页
+         * preIndex 整数，翻页的起始页
+         * currentIndex 整数，翻到的那页
+         */
+        function play(preIndex, currentIndex) {
+            $('.banner-panel').eq(preIndex).fadeOut(500)
+                .parent().children().eq(currentIndex).fadeIn(1000);
+            $('.banner-item').removeClass('banner-item-selected');
+            $('.banner-item').eq(currentIndex).addClass('banner-item-selected');
+        }
+
+        /**
+         * 开始轮播
+         */
+        function start() {
+            if (!hasStarted) {
+                hasStarted = true;
+                interval = setInterval(next, t);
+            }
+        }
+
+        /**
+         * 停止轮播
+         */
+        function stop() {
+            clearInterval(interval);
+            hasStarted = false;
+        }
+
+        //开始轮播
+        start();
+    });
+</script>
+</html>

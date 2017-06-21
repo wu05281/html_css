@@ -1,0 +1,217 @@
+body {
+    background: #eee;
+}
+
+#tool_bar {
+    height: 39px;
+    background: #f2f2f2;
+    border-bottom: 1px #ddd solid;
+}
+
+#tool_bar_left {
+    float: left;
+    margin-left: 40px;
+}
+
+#tool_bar_phone {
+    background: url("../images/phone-icon.png") left center no-repeat;
+    font: 14px/39px "Microsoft YaHei";
+    border-right: 1px solid;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#tool_bar_info {
+    font: 14px/39px "Microsoft YaHei";
+    padding-left: 15px;
+}
+
+#tool_bar_right {
+    float: right;
+    margin-right: 70px;
+    font: 14px/39px "Microsoft YaHei";
+}
+
+#tool_bar_qq {
+    display: block;
+    width: 28px;
+    height: 30px;
+    background: url("../images/mobile_QQ.png") no-repeat;
+    float: left;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+#tool_bar_app {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: url("../images/mobile_QQ.png") -51px 0 no-repeat;
+    float: left;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+#tool_bar_login {
+    display: inline;
+    float: left;
+    margin-top: 9px;
+    width: 60px;
+    height: 21px;
+    background: url("../images/login_icon.png") left top no-repeat;
+    text-align: center;
+    font: 14px/22px "Microsoft YaHei";
+    color: #fff;
+}
+
+#tool_bar_register {
+    display: inline;
+    float: left;
+    margin-top: 9px;
+    width: 60px;
+    height: 21px;
+    background: url("../images/login_icon.png") left top no-repeat;
+    text-align: center;
+    font: 14px/22px "Microsoft YaHei";
+    margin-left: 10px;
+    color: #fff;
+}
+
+#tool_bar_help {
+    display: inline;
+    float: left;
+    margin-left: 15px;
+    margin-top: 9px;
+    height: 21px;
+    font: 14px/21px "Microsoft YaHei";
+    color: #666;
+}
+
+#header {
+    height: 116px;
+}
+
+#header_logo {
+    float: left;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+#header_menu {
+    float: right;
+    height: 26px;
+    margin-top: 47px;
+    margin-right: 70px;
+}
+
+.header_menu_li {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0 0 26px;
+    font: 18px/26px "Microsoft YaHei";
+    color: #000;
+    text-align: center;
+}
+
+.sub_menu {
+    display: none;
+    position: absolute;
+    text-align: left;
+    z-index: 1000;
+}
+
+.header_menu_li:hover {
+    color: coral;
+    cursor: pointer;
+}
+
+#header_menu_prd:hover .sub_menu {
+    display: block;
+    color: black;
+
+}
+
+.sub_menu_li {
+    height: 30px;
+    font: 18px/30px "Microsoft YaHei";
+    color: black;
+    border-bottom: 1px solid lightgray;
+
+}
+
+.sub_menu_li:hover {
+    color: coral;
+    cursor: pointer;
+}
+
+/*a {*/
+    /*text-decoration: none;*/
+/*}*/
+
+.banner-main, .banner-nav {
+    list-style: outside none none;
+}
+
+.banner, .banner-panel img {
+    width: 1280px;
+    height: 400px;
+}
+
+.banner {
+    text-align: center;
+    margin: 0px auto;
+    position: relative;
+}
+
+.banner-panel, .banner-nav{
+    position: absolute;
+    z-index: 8;
+}
+
+.banner-panel img {
+    border: none;
+}
+
+.banner-nav {
+    margin-left: -51px;
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+}
+
+.banner-nav li {
+    background: white;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 2px;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    width: 18px;
+}
+
+.banner-nav .banner-item-selected {
+    background: darkorange;
+}
+
+#shouyi {
+
+    height: 255px;
+    margin: 0px 15px 0px 0px;
+}
+
+#huoqi {
+
+}
+
+#footer {
+    height: 40px;
+    background: cornflowerblue;
+}
+
+a[href] {
+    color: yellowgreen;
+}

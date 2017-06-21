@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery轮播效果图 </title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style type="text/css">
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .banner{
+            position: relative;
+            margin: 0px auto;
+            width: 1280px;
+            height: 400px;
+        }
+        /*清除li的原点*/
+        .banner-main, .banner-nav {
+            list-style: outside none none;
+        }
+        /*绝对定位，消除按列表展示*/
+        .banner-panel, .banner-nav{
+            position: absolute;
+            z-index: 8;
+        }
+        .banner-nav{
+            margin-left: -51px;
+            position: absolute;
+            left: 50%;
+            bottom: 4px;
+        }
+        .banner-nav li {
+            background: white;
+            /** 圆形边框 **/
+            border-radius: 50%;
+            cursor: pointer;
+            /*如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条等行为*/
+            overflow: hidden;
+            text-align: center;
+            display: inline-block;
+            height: 18px;
+            line-height: 18px;
+            width: 18px;
+        }
+        .banner-nav .banner-item-selected {
+            background: darkorange;
+        }
+
+        .banner-page{
+            position: relative;
+            z-index: 10;
+            top: 200px;
+        }
+        .banner-page a {
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            text-align: center;
+            display: inline-block;
+            font-family: "simsun";
+            font-size: 22px;
+            width: 28px;
+            height: 62px;
+            line-height: 62px;
+
+            text-decoration-line: none;
+        }
+
+        .banner-page a:HOVER {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .banner-next {
+            left: 95%;
+        }
+    </style>
+
+</head>
+<body>
+<div class="banner">
+    <ul class="banner-main">
+        <li class="banner-panel">
+            <a href="http://www.jb51.net" target="_blank"><img alt="关注脚本之家" title="关注脚本之家" src="./images/banner-1.png"></a>
+        </li>
+        <li class="banner-panel">
+            <a href="http://www.jb51.net" target="_blank"><img alt="关注脚本之家" title="关注脚本之家" src="./images/banner-1.png"></a>
+        </li>
+        <li class="banner-panel">
+            <a href="http://www.jb51.net" target="_blank"><img alt="关注脚本之家" title="关注脚本之家" src="./images/banner-1.png"></a>
+        </li>
+        <li class="banner-panel">
+            <a href="http://www.jb51.net" target="_blank"><img alt="关注脚本之家" title="关注脚本之家" src="./images/banner-1.png"></a>
+        </li>
+    </ul>
+    <div class="banner-extra">
+        <ul class="banner-nav">
+            <li class="banner-item"></li>
+            <li class="banner-item"></li>
+            <li class="banner-item"></li>
+            <li class="banner-item"></li>
+        </ul>
+        <div class="banner-page">
+            <a class="banner-pre" href="javascript:;;">< </a>
+            <a class="banner-next" href="javascript:;;">></a>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+            $(document).ready(function () {
+                var length,
+                    currentIndex = 0,
+                    interval,
+                    hasStarted = false, //是否已经开始轮播
+                    t = 3000; //轮播时间间隔
+                length = $('.banner-panel').length;
+                //将除了第一张图片隐藏
+                $('.banner-panel:not(:first)').hide();
+                //将第一个banner-item设为激活状态
+                $('.banner-item:first').addClass('banner-item-selected');
+                //隐藏向前、向后翻按钮
+                $('.banner-page').hide();
+                //鼠标上悬时显示向前、向后翻按钮,停止滑动，鼠标离开时隐藏向前、向后翻按钮，开始滑动
+                $('.banner-panel, .banner-pre, .banner-next').hover(function () {
+                    stop();
+                    $('.banner-page').show();
+                }, function () {
+                    $('.banner-page').hide();
+                    start();
+                });
+                //鼠标放在小圆点上时
+                $('.banner-item').hover(function (e) {
+                    stop();
+                    var preIndex = $(".banner-item").filter(".banner-item-selected").index();
+                    currentIndex = $(this).index();
+                    play(preIndex, currentIndex);
+                }, function () {
+                    start();
+                });
+
+                $('.banner-pre').unbind('click');
+                $('.banner-pre').bind('click', function () {
+                    pre();
+                });
+                $('.banner-next').unbind('click');
+                $('.banner-next').bind('click', function () {
+                    next();
+                });
+                /**
+                 * 向前翻页
+                 */
+                function pre() {
+                    var preIndex = currentIndex;
+                    currentIndex = (--currentIndex + length) % length;
+                    play(preIndex, currentIndex);
+                }
+
+                /**
+                 * 向后翻页
+                 */
+                function next() {
+                    var preIndex = currentIndex;
+                    currentIndex = ++currentIndex % length;
+                    play(preIndex, currentIndex);
+                }
+
+                /**
+                 * 从preIndex页翻到currentIndex页
+                 * preIndex 整数，翻页的起始页
+                 * currentIndex 整数，翻到的那页
+                 */
+                function play(preIndex, currentIndex) {
+                    $('.banner-panel').eq(preIndex).fadeOut(500)
+                        .parent().children().eq(currentIndex).fadeIn(1000);
+                    $('.banner-item').removeClass('banner-item-selected');
+                    $('.banner-item').eq(currentIndex).addClass('banner-item-selected');
+                }
+
+                /**
+                 * 开始轮播
+                 */
+                function start() {
+                    if (!hasStarted) {
+                        hasStarted = true;
+                        interval = setInterval(next, t);
+                    }
+                }
+
+                /**
+                 * 停止轮播
+                 */
+                function stop() {
+                    clearInterval(interval);
+                    hasStarted = false;
+                }
+
+                //开始轮播
+                start();
+            });
+</script>
+</html>
