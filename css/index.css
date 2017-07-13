@@ -58,7 +58,9 @@ body {
     margin-top: 9px;
     width: 60px;
     height: 21px;
-    background: url("../images/login_icon.png") left top no-repeat;
+    /*background: url("../images/login_icon.png") left top no-repeat;*/
+    background: gray;
+    border-radius: 5px;
     text-align: center;
     font: 14px/22px "Microsoft YaHei";
     color: #fff;
@@ -70,11 +72,22 @@ body {
     margin-top: 9px;
     width: 60px;
     height: 21px;
-    background: url("../images/login_icon.png") left top no-repeat;
+    background: gray;
+    border-radius: 5px;
     text-align: center;
     font: 14px/22px "Microsoft YaHei";
     margin-left: 10px;
     color: #fff;
+}
+#tool_bar_login:hover, #tool_bar_register:hover{
+    background: coral;
+}
+
+.info{
+    margin-top: 13px;
+    font: 16px/1 "Microsoft Yahei";
+    color: #fff;
+    opacity: 1;
 }
 
 #tool_bar_help {
@@ -207,7 +220,8 @@ body {
     height: 276px;
     background: black;
     margin-left: 187px;
-    filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;/**半透明效果**/
+    opacity: 0.6;
+    /*filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;!**半透明效果**!*/
 }
 
 #shouyi {
