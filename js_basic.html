@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js基础练习</title>
+    <style>
+        * {
+            margin:0px;
+            padding: 0px;
+        }
+        ul{
+            list-style: none;
+        }
+        #nva_second {
+            display: none;
+        }
+        #nva_first{
+            width: 50px;
+            height: 30px;
+            border: 1px solid beige;
+            line-height: 30px;
+            text-align: center;
+            background-color: gray;
+            padding: 0px 5px;
+            position: relative;
+        }
+        #nva_second{
+            width: 80px;
+            height: 90px;
+            border: 1px solid beige;
+            line-height: 30px;
+            text-align: center;
+            position: absolute;
+            left: -1px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li id="nva_first">第一层
+        <ul id="nva_second">
+            <li>第二层1</li>
+            <li>第二层2</li>
+            <li>第二层3</li>
+        </ul>
+    </li>
+</ul>
+</body>
+<script>
+    var nva_first = document.getElementById('nva_first');
+    nva_first.onmouseover = function () {
+        document.getElementById('nva_second').style.display='block';
+        document.getElementById('nva_second').style.backgroundColor='yellow';
+        document.getElementById('nva_first').style.backgroundColor='purple';
+    };
+    nva_first.onmouseout = function () {
+        document.getElementById('nva_second').style.display='none';
+        document.getElementById('nva_first').style.backgroundColor='gray';
+    };
+</script>
+</html>
