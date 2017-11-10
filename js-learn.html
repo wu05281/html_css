@@ -35,8 +35,19 @@
 //    document.write(pre_2 + pre_1);
 
     //parseInt 从前往后到非数字位截止。
-    alert(typeof (typeof (null)));
-    console.log(parseInt('124abc'));
+//    alert(typeof (typeof (null)));
+//    console.log(parseInt('124abc'));
+    function a() {
+        function b() {
+            sum++;
+            console.log(sum);
+        }
+        var sum = 100;
+        return b;
+    }
+    var demo = a();
+    demo();
+    demo();
 </script>
 </body>
 </html>
