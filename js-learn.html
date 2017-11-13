@@ -37,17 +37,47 @@
     //parseInt 从前往后到非数字位截止。
 //    alert(typeof (typeof (null)));
 //    console.log(parseInt('124abc'));
-    function a() {
-        function b() {
-            sum++;
-            console.log(sum);
-        }
-        var sum = 100;
-        return b;
+//    function a() {
+//        function b() {
+//            sum++;
+//            console.log(sum);
+//        }
+//        var sum = 100;
+//        return b;
+//    }
+//    var demo = a();
+//    demo();
+//    demo();
+
+//    function test() {
+//        var arr = [];
+//        for (var i = 0; i < 10; i++) {
+//            (function (j) {
+//                arr[j] = function () {
+//                    document.write(j + "");
+//                }
+//            }(i));
+//        }
+//        return arr;
+//    }
+//
+//    var demo = test();
+//    for(var j = 0; j < 10; j++) {
+//        demo[j]();
+//    }
+
+//    function Car() {
+//        this.name = "BMW";
+//        this.color = "red";
+//    }
+    function Animal() {
+        this.name = "hello";
     }
-    var demo = a();
-    demo();
-    demo();
+    function Dog() {
+    }
+//    Dog.prototype = new Animal();
+//    Dog.prototype.constructor = Animal;
+    var dog = new Dog();
 </script>
 </body>
 </html>
